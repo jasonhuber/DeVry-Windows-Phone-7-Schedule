@@ -1,0 +1,17 @@
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\ResolveAssemblyReference.cache
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\App.g.i.cs
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\ByCourse.g.i.cs
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\ByProfessor.g.i.cs
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\MainPage.g.i.cs
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\DeVry_WP7_Scheduler.g.resources
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\Bin\Debug\ApplicationIcon.png
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\Bin\Debug\Background.png
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\Bin\Debug\DeVry_WP7_Scheduler.dll
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\Bin\Debug\DeVry_WP7_Scheduler.pdb
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\Bin\Debug\AppManifest.xaml
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\Bin\Debug\DeVry_WP7_Scheduler.xap
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\Bin\Debug\Newtonsoft.Json.WindowsPhone.dll
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\Bin\Debug\Newtonsoft.Json.WindowsPhone.pdb
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\DeVry_WP7_Scheduler.dll
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\DeVry_WP7_Scheduler.pdb
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\XapCacheFile.xml
