@@ -25,5 +25,11 @@ namespace DeVry_WP7_Scheduler
         {
             NavigationService.Navigate(new Uri("/ByProfessor.xaml", UriKind.Relative));
         }
+
+        private void txtlnkShowAllClasses_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=SPR2011&tod=&day=&session=
+            NavigationService.Navigate(new Uri("/ByDepartment.xaml", UriKind.Relative));
+        }
     }
 }

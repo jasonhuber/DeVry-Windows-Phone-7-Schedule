@@ -20,37 +20,31 @@ using Newtonsoft.Json.Serialization;
 
 namespace DeVry_WP7_Scheduler
 {
-    public partial class ByCourse : PhoneApplicationPage
+    public partial class ByDepartment : PhoneApplicationPage
     {
-        public ByCourse()
+        public ByDepartment()
         {
             InitializeComponent();
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            String professor = "";
-            
-            bool itemExists = NavigationContext.QueryString.TryGetValue("professor", out professor);
-            if (itemExists)
-            {
-                PageTitle.Text = professor;
-
-                WebClient wc = new WebClient();
-                wc.DownloadStringCompleted +=new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
-                wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=SPR2011&prof=" + professor));
-            }
-
+            //go get the JSON for professor
+            //http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=SPR2011&tod=&day=&session=
+            WebClient wc = new WebClient();
+            wc.DownloadStringCompleted +=new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+                      //wc.DownloadStringAsync(new Uri("http://hub3r.com/profs.txt"));
+            wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=SPR2011&tod=&day=&session="));
         }
 
         void  wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e) {
 
             //I am just doing this since I already have an app that is using the "poorly" formatted JSON
-            string result = e.Result.Replace(@"cls"":[", @"ClassName"":").Replace("]", "");
+            string result = e.Result.Replace(@"department"":[",@"DeptName"":").Replace("]","");
             result = "[" + result + "]";
-            result = result.Replace(",\n", @"},{""ClassName"": ");
+            result = result.Replace(",\n", @"},{""DeptName"": ");
             //List< test > myDeserializedObjList = (List< test >)Newtonsoft.Json.JsonConvert.DeserializeObject(Request["jsonString"], typeof(List< test >));
-            List<Cls> deserializedJSON = (List<Cls>)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(List<Cls>));
+            List<Department> deserializedJSON = (List<Department>)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(List<Department>));
             listBox1.ItemsSource = deserializedJSON;
 
 //            listBox1.ItemsSource = o;
@@ -59,23 +53,22 @@ namespace DeVry_WP7_Scheduler
             
          }
       
-        public class Cls
+        public class Department
         {
-            public string ClassName { get; set; }
+            public string DeptName { get; set; }
         }
 
-        
         private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             if (listBox1.SelectedIndex != -1)
             {
+                Department selectedDept = (Department)listBox1.Items[listBox1.SelectedIndex];
 
-                Cls cls = (Cls)listBox1.Items[listBox1.SelectedIndex];
-
-                // MessageBox.Show();
                 //TextBlock tb = (TextBlock)sender;
 
-                NavigationService.Navigate(new Uri("/CourseDetail.xaml?courseid=" + cls.ClassName, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/ByCourse.xaml?professor=" + selectedDept.DeptName, UriKind.Relative));
+                
             }
         }
     }

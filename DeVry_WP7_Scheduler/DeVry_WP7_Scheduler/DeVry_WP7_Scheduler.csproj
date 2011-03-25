@@ -71,6 +71,9 @@
     <Compile Include="ByProfessor.xaml.cs">
       <DependentUpon>ByProfessor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ByDepartment.xaml.cs">
+      <DependentUpon>ByDepartment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CourseDetail.xaml.cs">
       <DependentUpon>CourseDetail.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ByProfessor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ByDepartment.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
