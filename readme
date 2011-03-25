@@ -1,0 +1,14 @@
+Installation:
+
+You first need to build this solution.
+
+So be sure you have vs.net 2010 and all the required WP7 stuff installed:
+http://blogs.msdn.com/b/mis_laboratory/
+
+This works against a public URL published by DeVry University in Phoenix.
+
+Jason Huber handles this publication along with Mark Milliken.
+
+The JSON is poorly formatted and also used for another application:
+http://bit.ly/devrymobile , so this app fixes the JSON when it is read in.
+
