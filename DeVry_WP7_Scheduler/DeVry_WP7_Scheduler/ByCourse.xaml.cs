@@ -64,25 +64,15 @@ namespace DeVry_WP7_Scheduler
             public string ClassName { get; set; }
         }
 
-        //from: http://msdn.microsoft.com/en-us/library/system.runtime.serialization.json.datacontractjsonserializer%28v=vs.95%29.aspx
-        // Deserialize a JSON stream to a User object.
-      
-
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            TextBlock tb = (TextBlock)sender;
-
-            NavigationService.Navigate(new Uri("/Courses.xaml?professor=" + tb.Text, UriKind.Relative));
-        }
-
+        
         private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Cls selectedProf = (Cls)listBox1.Items[listBox1.SelectedIndex];
+            Cls cls = (Cls)listBox1.Items[listBox1.SelectedIndex];
 
-            MessageBox.Show(selectedProf.ClassName);
+           // MessageBox.Show();
             //TextBlock tb = (TextBlock)sender;
 
-     //       NavigationService.Navigate(new Uri("/Courses.xaml?professor=" + tb.Text, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/CourseDetail.xaml?courseid=" + cls.ClassName, UriKind.Relative));
         }
     }
 }

@@ -58,25 +58,6 @@ namespace DeVry_WP7_Scheduler
             public string ProfName { get; set; }
         }
 
-        //from: http://msdn.microsoft.com/en-us/library/system.runtime.serialization.json.datacontractjsonserializer%28v=vs.95%29.aspx
-        // Deserialize a JSON stream to a User object.
-        public static Professor ReadToObject(string json)
-        {
-            Professor deserializedUser = new Professor();
-            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(json));
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(deserializedUser.GetType());
-            deserializedUser = ser.ReadObject(ms) as Professor;
-            ms.Close();
-            return deserializedUser;
-        }
-
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            TextBlock tb = (TextBlock)sender;
-
-            NavigationService.Navigate(new Uri("/Courses.xaml?professor=" + tb.Text, UriKind.Relative));
-        }
-
         private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
