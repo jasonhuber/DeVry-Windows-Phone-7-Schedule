@@ -31,8 +31,8 @@
             <ListBox Height="595" HorizontalAlignment="Left" Margin="9,6,0,0" Name="listBox1" VerticalAlignment="Top" Width="447" SelectionChanged="listBox1_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>                    
-                        <StackPanel Orientation="Vertical" Height="32" Width="460">
-                            <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding DeptName}" FontSize="24" Height="28" TextAlignment="Left" MaxWidth="450" />
+                        <StackPanel Orientation="Vertical" Height="56" Width="460">
+                            <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding DeptName}" FontSize="48" Height="56" TextAlignment="Left" MaxWidth="450" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

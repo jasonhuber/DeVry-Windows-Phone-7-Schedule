@@ -17,3 +17,5 @@ E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_S
 E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\XapCacheFile.xml
 E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\CourseDetail.g.i.cs
 E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\ByDepartment.g.i.cs
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\ByCourses.g.i.cs
+E:\DropBox\My Dropbox\Personal\DeVryWP7Scheduler\DeVry_WP7_Scheduler\DeVry_WP7_Scheduler\obj\Debug\ByClass.g.i.cs

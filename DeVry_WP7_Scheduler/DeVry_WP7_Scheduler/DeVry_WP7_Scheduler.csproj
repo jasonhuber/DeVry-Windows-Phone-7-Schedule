@@ -74,6 +74,12 @@
     <Compile Include="ByDepartment.xaml.cs">
       <DependentUpon>ByDepartment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ByCourses.xaml.cs">
+      <DependentUpon>ByCourses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ByClass.xaml.cs">
+      <DependentUpon>ByClass.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CourseDetail.xaml.cs">
       <DependentUpon>CourseDetail.xaml</DependentUpon>
     </Compile>
@@ -111,6 +117,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ByDepartment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ByCourses.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ByClass.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

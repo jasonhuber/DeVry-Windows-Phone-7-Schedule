@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="DeVry_WP7_Scheduler.ByProfessor"
+    x:Class="DeVry_WP7_Scheduler.ByClass"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -23,7 +23,7 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="DeVry Scheduler" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="By Professor" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="By Course" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -32,7 +32,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>                    
                         <StackPanel Orientation="Vertical" Height="56" Width="460">
-                            <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding ProfName}" FontSize="48" Height="56" TextAlignment="Left" MaxWidth="450" />
+                            <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding ClassName}" FontSize="48" Height="56" TextAlignment="Left" MaxWidth="450" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

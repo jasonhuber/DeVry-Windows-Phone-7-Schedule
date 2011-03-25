@@ -17,31 +17,31 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using Microsoft.Phone.Tasks;
 
 namespace DeVry_WP7_Scheduler
 {
-    public partial class ByCourse : PhoneApplicationPage
+    public partial class ByClass : PhoneApplicationPage
     {
-        public ByCourse()
+        public ByClass()
         {
             InitializeComponent();
         }
-        String professor = "";
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            
-            bool itemExists = NavigationContext.QueryString.TryGetValue("professor", out professor);
+            String title = "";
+            Uri theUri = new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=SPR2011&dept=CIS&course=CIS115");
+            bool itemExists = NavigationContext.QueryString.TryGetValue("courseid", out title);
             if (itemExists)
             {
-                PageTitle.Text = professor;
+                theUri = new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=SPR2011&dept=" + title.Substring(0,title.IndexOf(" ")) + "&course=" + title);
 
-                WebClient wc = new WebClient();
-                wc.DownloadStringCompleted +=new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
-
-                wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=SPR2011&prof=" + professor));
             }
+            WebClient wc = new WebClient();
+            wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+            wc.DownloadStringAsync(theUri);
+            PageTitle.Text = title;
+
 
         }
 
@@ -76,28 +76,6 @@ namespace DeVry_WP7_Scheduler
 
                 NavigationService.Navigate(new Uri("/CourseDetail.xaml?courseid=" + cls.ClassName, UriKind.Relative));
             }
-        }
-
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            int commaloc = professor.IndexOf(",");
-            string lastname = professor.Substring(0, commaloc);
-            string firstinitial = professor.Substring(commaloc + 2, 1);
-            string email = firstinitial + lastname + "@devry.edu";
-            EmailComposeTask emailComposeTask = new EmailComposeTask();
-            emailComposeTask.To = email;
-            emailComposeTask.Body = "\n\n This message was initialized from the Windows Phone 7 Scheduler App";
-//            emailComposeTask.Cc = "user2@example.com";
-            emailComposeTask.Subject = "";
-            emailComposeTask.Show();
-        }
-
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
-        {
-            PhoneCallTask phoneCallTask = new PhoneCallTask();
-            phoneCallTask.PhoneNumber = "602 870 9222";
-            phoneCallTask.DisplayName = professor;
-            phoneCallTask.Show();
         }
     }
 }
