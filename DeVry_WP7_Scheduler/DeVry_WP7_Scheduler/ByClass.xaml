@@ -37,6 +37,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <google:BannerAd xmlns:google="clr-namespace:Google.AdMob.Ads.WindowsPhone7.WPF;assembly=Google.AdMob.Ads.WindowsPhone7" AdUnitID="a14d8d01adc7d4f" Margin="-12,504,12,0" />
         </Grid>
     </Grid>
  

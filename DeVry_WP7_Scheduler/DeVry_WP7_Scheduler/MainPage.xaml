@@ -23,17 +23,32 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="DeVry Scheduler" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="DeVry" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="Phoenix Area" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="xyz" Text="Mesa, Scottsdale, and Glendale" Margin="40,-7,0,0" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
-        <StackPanel Height="583" HorizontalAlignment="Left" Margin="24,12,0,0" Name="stackPanel1" VerticalAlignment="Top" Width="444" Grid.Row="1">
-            <TextBlock FontSize="34" Height="49" Name="txtlnkShowAllClasses" Text="Show All Classes" Width="444" MouseLeftButtonDown="txtlnkShowAllClasses_MouseLeftButtonDown" />
-            <TextBlock Height="49" Name="txtlnkByProfessor" FontSize="34" Text="By Professor" MouseLeftButtonDown="txtlnkByProfessor_MouseLeftButtonDown" Width="444" />
-        </StackPanel>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <StackPanel HorizontalAlignment="Left" Margin="12,12,0,410" Name="stackPanel1" Width="456">
+                <TextBlock FontSize="34" Height="49" Name="txtlnkShowAllClasses" Text="Show All Classes" Width="444" MouseLeftButtonDown="txtlnkShowAllClasses_MouseLeftButtonDown" />
+                <TextBlock FontSize="14" Margin="20,0,0,0" Height="20" Name="textBlock1" Text="Select this option to browse courses by department (ACCT, CIS, etc.)" Width="444" />
+                <TextBlock Height="49" Margin="0,10,0,0" Name="txtlnkByProfessor" FontSize="34" Text="By Professor" MouseLeftButtonDown="txtlnkByProfessor_MouseLeftButtonDown" Width="444" />
+                <TextBlock FontSize="14" Margin="20,0,0,0" Height="20" Name="textBlock12" Text="Select this option to browse by, email, or call your professor" Width="444" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Margin="12,201,0,0" Name="stackPanel1s" Width="456" Height="178" VerticalAlignment="Top">
+                <TextBlock Height="49" Margin="0,10,0,0" Name="textBlxok1" FontSize="34" Text="Useful Links"  Width="444" />
+                <TextBlock FontSize="20" Margin="20,0,0,0" Height="26" Name="txtCallYourCampus" Text="Click here to call or map your campus" Width="444" MouseLeftButtonDown="txtCallYourCampus_MouseLeftButtonDown" />
+                <TextBlock FontSize="20" Margin="20,0,0,0" Height="26" Name="txtYourCampusHomepage" Text="Click here to visit your campus homepage" Width="444" MouseLeftButtonDown="txtYourCampusHomepage_MouseLeftButtonDown" />
+                <TextBlock FontSize="20" Margin="20,0,0,0" Height="26" Name="txtUnderGradCatalogue" Text="DeVry Undergrad Course Catalog" Width="444" MouseLeftButtonDown="txtUnderGradCatalogue_MouseLeftButtonDown" />
+            </StackPanel>
+            <google:BannerAd xmlns:google="clr-namespace:Google.AdMob.Ads.WindowsPhone7.WPF;assembly=Google.AdMob.Ads.WindowsPhone7" AdUnitID="a14d8d01adc7d4f" Margin="12,385,-12,108" />
+            <StackPanel HorizontalAlignment="Left" Margin="12,485,0,6" Name="stackPanel1ss" Width="456">
+                <TextBlock Margin="0,10,0,0" Height="28" Name="txtCredit" FontSize="24" Text="Credits (blame)"  Width="444" />
+                <TextBlock TextWrapping="Wrap" FontSize="14" Margin="20,0,0,0" Height="50" Name="txtCredits" Text="Programming/Desgin: Jason Huber; We need images: your name here?" Width="400" />
+            </StackPanel>
+        </Grid>
     </Grid>
- 
+
     <!--Sample code showing usage of ApplicationBar-->
     <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">

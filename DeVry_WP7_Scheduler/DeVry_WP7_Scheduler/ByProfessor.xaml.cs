@@ -71,5 +71,10 @@ namespace DeVry_WP7_Scheduler
                 
             }
         }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(sender.ToString());
+        }
     }
 }

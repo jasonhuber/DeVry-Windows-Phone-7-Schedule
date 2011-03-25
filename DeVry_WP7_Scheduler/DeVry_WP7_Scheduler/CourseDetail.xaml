@@ -25,11 +25,12 @@
             <TextBlock x:Name="ApplicationTitle" Text="DeVry Scheduler" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="By Course" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
-
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <phone:WebBrowser HorizontalAlignment="Left" Margin="12,6,0,0" Name="webBrowser1" VerticalAlignment="Top" Height="595" Width="438"  />
+            <google:BannerAd xmlns:google="clr-namespace:Google.AdMob.Ads.WindowsPhone7.WPF;assembly=Google.AdMob.Ads.WindowsPhone7" AdUnitID="a14d8d01adc7d4f" Margin="-12,504,12,0" />
         </Grid>
+        
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->
