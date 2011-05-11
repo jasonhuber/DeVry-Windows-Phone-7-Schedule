@@ -30,16 +30,24 @@ namespace DeVry_WP7_Scheduler
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             String title = "";
-            Uri theUri = new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=SPR2011&dept=CIS&course=CIS115");
+            Uri theUri = new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=" + Globals.currSession + "&dept=CIS&course=CIS115");
             bool itemExists = NavigationContext.QueryString.TryGetValue("courseid", out title);
             if (itemExists)
             {
-                theUri = new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=SPR2011&dept=" + title.Substring(0,title.IndexOf(" ")) + "&course=" + title);
+                theUri = new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses2.asp?term=" + Globals.currSession + "&dept=" + title.Substring(0, title.IndexOf(" ")) + "&course=" + title);
 
             }
             WebClient wc = new WebClient();
             wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
-            wc.DownloadStringAsync(theUri);
+            try
+            {
+
+                wc.DownloadStringAsync(theUri);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(@"It seems like you are either not connected to the Internet or the server is down. Can you manually browse to http://phx.devry.edu?");
+            }
             PageTitle.Text = title;
 
 
@@ -48,11 +56,11 @@ namespace DeVry_WP7_Scheduler
         void  wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e) {
 
             //I am just doing this since I already have an app that is using the "poorly" formatted JSON
-            string result = e.Result.Replace(@"cls"":[", @"ClassName"":").Replace("]", "");
-            result = "[" + result + "]";
-            result = result.Replace(",\n", @"},{""ClassName"": ");
+     //       string result = e.Result.Replace(@"cls"":[", @"ClassName"":").Replace("]", "");
+      //      result = "[" + result + "]";
+       //     result = result.Replace(",\n", @"},{""ClassName"": ");
             //List< test > myDeserializedObjList = (List< test >)Newtonsoft.Json.JsonConvert.DeserializeObject(Request["jsonString"], typeof(List< test >));
-            List<Cls> deserializedJSON = (List<Cls>)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(List<Cls>));
+            List<Cls> deserializedJSON = (List<Cls>)Newtonsoft.Json.JsonConvert.DeserializeObject(e.Result, typeof(List<Cls>));
             listBox1.ItemsSource = deserializedJSON;
 
 //            listBox1.ItemsSource = o;
@@ -60,10 +68,15 @@ namespace DeVry_WP7_Scheduler
             //Professor profs = ReadToObject(e.Result);
             
          }
-      
+
+
         public class Cls
         {
             public string ClassName { get; set; }
+            public string Title { get; set; }
+            public string Day { get; set; }
+            public string Time { get; set; }
+            public string Room { get; set; }
         }
 
         

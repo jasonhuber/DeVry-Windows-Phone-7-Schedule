@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
-namespace DeVry_WP7_Scheduler
+namespace DeVry_WP7_Scheduler   
 {
     public partial class CourseDetail : PhoneApplicationPage
     {
@@ -38,10 +38,18 @@ namespace DeVry_WP7_Scheduler
 
             //    WebClient wc = new WebClient();
             //    wc.DownloadStringCompleted +=new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
-            //    wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=SPR2011&courseid=" + courseid));
+                //    wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=" + Globals.currSession + "&courseid=" + courseid));
             //
-                webBrowser1.Source = new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclass.asp?term=SPR2011&courseid=" + courseid);
-                
+                try
+                {
+
+                    webBrowser1.Source = new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclass.asp?term=" + Globals.currSession + "&courseid=" + courseid);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(@"It seems like you are either not connected to the Internet or the server is down. Can you manually browse to http://phx.devry.edu?");
+                }
+
             }
 
         }

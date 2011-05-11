@@ -30,22 +30,37 @@ namespace DeVry_WP7_Scheduler
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             //go get the JSON for professor
-            //http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=SPR2011&tod=&day=&session=
+            //http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=" + Globals.currSession + "&tod=&day=&session=
             WebClient wc = new WebClient();
             wc.DownloadStringCompleted +=new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
                       //wc.DownloadStringAsync(new Uri("http://hub3r.com/profs.txt"));
-            wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=SPR2011&tod=&day=&session="));
+            try
+            {
+                wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=" + Globals.currSession + "&tod=&day=&session="));
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(@"It seems like you are either not connected to the Internet or the server is down. Can you manually browse to http://phx.devry.edu?");
+            }
         }
 
         void  wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e) {
-
-            //I am just doing this since I already have an app that is using the "poorly" formatted JSON
-            string result = e.Result.Replace(@"department"":[",@"DeptName"":").Replace("]","");
-            result = "[" + result + "]";
-            result = result.Replace(",\n", @"},{""DeptName"": ");
-            //List< test > myDeserializedObjList = (List< test >)Newtonsoft.Json.JsonConvert.DeserializeObject(Request["jsonString"], typeof(List< test >));
-            List<Department> deserializedJSON = (List<Department>)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(List<Department>));
-            listBox1.ItemsSource = deserializedJSON;
+            try
+            {
+                //I am just doing this since I already have an app that is using the "poorly" formatted JSON
+                string result = e.Result.Replace(@"department"":[", @"DeptName"":").Replace("]", "");
+                result = "[" + result + "]";
+                result = result.Replace(",\n", @"},{""DeptName"": ");
+                //List< test > myDeserializedObjList = (List< test >)Newtonsoft.Json.JsonConvert.DeserializeObject(Request["jsonString"], typeof(List< test >));
+                List<Department> deserializedJSON = (List<Department>)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(List<Department>));
+                listBox1.ItemsSource = deserializedJSON;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The server has returned an unexpected result. Please try again later or contact help@everythingboomerang.com :)");
+            }
+        
 
 //            listBox1.ItemsSource = o;
 

@@ -30,21 +30,30 @@ namespace DeVry_WP7_Scheduler
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             //go get the JSON for professor
-            //http://206.209.106.106/academics/registration/practice_schedule_mobile/getprofs.asp?dept=&term=SPR2011&tod=&course=undefined&day=&session=
+            //http://206.209.106.106/academics/registration/practice_schedule_mobile/getprofs.asp?dept=&term=" + Globals.currSession + "&tod=&course=undefined&day=&session=
             WebClient wc = new WebClient();
             wc.DownloadStringCompleted +=new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
                       //wc.DownloadStringAsync(new Uri("http://hub3r.com/profs.txt"));
-            wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getprofs.asp?dept=&term=SPR2011&tod=&course=undefined&day=&session="));
-        }
+            try
+            {
+
+                wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getprofs2.asp"));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(@"It seems like you are either not connected to the Internet or the server is down. Can you manually browse to http://phx.devry.edu?");
+            }
+
+            }
 
         void  wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e) {
 
             //I am just doing this since I already have an app that is using the "poorly" formatted JSON
-            string result = e.Result.Replace(@"prof"":[",@"ProfName"":").Replace("]","");
-            result = "[" + result + "]";
-            result = result.Replace(",\n", @"},{""ProfName"": ");
+      //      string result = e.Result.Replace(@"prof"":[",@"ProfName"":").Replace("]","");
+        //    result = "[" + result + "]";
+          //  result = result.Replace(",\n", @"},{""ProfName"": ");
             //List< test > myDeserializedObjList = (List< test >)Newtonsoft.Json.JsonConvert.DeserializeObject(Request["jsonString"], typeof(List< test >));
-            List<Professor> deserializedJSON = (List<Professor>)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(List<Professor>));
+            List<Professor> deserializedJSON = (List<Professor>)Newtonsoft.Json.JsonConvert.DeserializeObject(e.Result, typeof(List<Professor>));
             listBox1.ItemsSource = deserializedJSON;
 
 //            listBox1.ItemsSource = o;

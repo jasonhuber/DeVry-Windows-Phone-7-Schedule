@@ -39,20 +39,27 @@ namespace DeVry_WP7_Scheduler
 
                 WebClient wc = new WebClient();
                 wc.DownloadStringCompleted +=new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+                try
+                {
 
-                wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses.asp?term=SPR2011&prof=" + professor));
-            }
+                    wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice_schedule_mobile/getclasses2.asp?term=" + Globals.currSession + "&prof=" + professor));
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show(@"It seems like you are either not connected to the Internet or the server is down. Can you manually browse to http://phx.devry.edu?");
+                }
+                }
 
         }
 
         void  wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e) {
 
             //I am just doing this since I already have an app that is using the "poorly" formatted JSON
-            string result = e.Result.Replace(@"cls"":[", @"ClassName"":").Replace("]", "");
-            result = "[" + result + "]";
-            result = result.Replace(",\n", @"},{""ClassName"": ");
+        //    string result = e.Result.Replace(@"cls"":[", @"ClassName"":").Replace("]", "");
+          //  result = "[" + result + "]";
+           // result = result.Replace(",\n", @"},{""ClassName"": ");
             //List< test > myDeserializedObjList = (List< test >)Newtonsoft.Json.JsonConvert.DeserializeObject(Request["jsonString"], typeof(List< test >));
-            List<Cls> deserializedJSON = (List<Cls>)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(List<Cls>));
+            List<Cls> deserializedJSON = (List<Cls>)Newtonsoft.Json.JsonConvert.DeserializeObject(e.Result, typeof(List<Cls>));
             listBox1.ItemsSource = deserializedJSON;
 
 //            listBox1.ItemsSource = o;
@@ -64,6 +71,11 @@ namespace DeVry_WP7_Scheduler
         public class Cls
         {
             public string ClassName { get; set; }
+            public string Title { get; set; }
+            public string Day { get; set; }
+            public string Time { get; set; }
+            public string Room { get; set; }
+
         }
 
         

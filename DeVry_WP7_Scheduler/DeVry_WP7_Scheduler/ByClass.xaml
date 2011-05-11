@@ -22,7 +22,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="DeVry Scheduler" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="Phoenix Scheduler" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="By Course" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
@@ -30,9 +30,17 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <ListBox Height="595" HorizontalAlignment="Left" Margin="9,6,0,0" Name="listBox1" VerticalAlignment="Top" Width="447" SelectionChanged="listBox1_SelectionChanged">
                 <ListBox.ItemTemplate>
-                    <DataTemplate>                    
-                        <StackPanel Orientation="Vertical" Height="56" Width="460">
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Height="100" Width="460">
                             <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding ClassName}" FontSize="48" Height="56" TextAlignment="Left" MaxWidth="450" />
+                            <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding Title}" FontSize="14" Height="15" TextAlignment="Left" MaxWidth="450" />
+                            <StackPanel Orientation="Horizontal" Height="15" Width="460">
+                                <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding Day}" FontSize="14" Height="15" TextAlignment="Left" MaxWidth="450" />
+                                <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text=" Time: " FontSize="14" Height="15" TextAlignment="Left" MaxWidth="450" />
+                                <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding Time}" FontSize="14" Height="15" TextAlignment="Left" MaxWidth="450" />
+                                <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text=" Room: " FontSize="14" Height="15" TextAlignment="Left" MaxWidth="450" />
+                                <TextBlock Foreground="#FFC8AB14" TextWrapping="Wrap" Text="{Binding Room}" FontSize="14" Height="15" TextAlignment="Left" MaxWidth="450" />
+                            </StackPanel>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

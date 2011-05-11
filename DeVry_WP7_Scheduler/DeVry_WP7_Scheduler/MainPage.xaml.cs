@@ -24,13 +24,27 @@ namespace DeVry_WP7_Scheduler
 
         private void txtlnkByProfessor_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+             if (Microsoft.Phone.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
             NavigationService.Navigate(new Uri("/ByProfessor.xaml", UriKind.Relative));
+            }
+             else
+             {
+                 MessageBox.Show("It seems like you are not connected to the Internet. Please try again when you have network!");
+             }
         }
 
         private void txtlnkShowAllClasses_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             //http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=SPR2011&tod=&day=&session=
-            NavigationService.Navigate(new Uri("/ByDepartment.xaml", UriKind.Relative));
+            if (Microsoft.Phone.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                NavigationService.Navigate(new Uri("/ByDepartment.xaml", UriKind.Relative));
+            }
+            else
+            {
+                MessageBox.Show("It seems like you are not connected to the Internet. Please try again when you have network!");
+            }
         }
 
         private void txtCallYourCampus_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -55,6 +69,44 @@ namespace DeVry_WP7_Scheduler
             WebBrowserTask webBrowserTask = new WebBrowserTask();
             webBrowserTask.URL = "http://www.devry.edu/uscatalog/";
             webBrowserTask.Show();
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Microsoft.Phone.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                GetCurrentTerm();
+            }
+            
+        }
+
+        private void GetCurrentTerm()
+        {
+            //go get the JSON for professor
+            //http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getdepartments.asp?term=SPR2011&tod=&day=&session=
+            WebClient wc = new WebClient();
+            wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(wc_DownloadStringCompleted);
+            //wc.DownloadStringAsync(new Uri("http://hub3r.com/profs.txt"));
+            try
+            {
+                wc.DownloadStringAsync(new Uri("http://206.209.106.106/academics/registration/practice%5Fschedule%5Fmobile/getcurrentterm.asp"));
+
+            }
+            catch (Exception)
+            {
+              //  MessageBox.Show(@"It seems like you are either not connected to the Internet or the server is down. Can you manually browse to http://phx.devry.edu?");
+            }
+        }
+        void wc_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            try
+            {
+                Globals.currSession = e.Result;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("The server has returned an unexpected result. Please try again later or contact help@everythingboomerang.com :)");
+            }
 
         }
     }
